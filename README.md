@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/helloskykoder/PawTube/refs/heads/main/pawtube_logo.png" alt="PawTube Logo" width="180" style="border-radius: 50%;">
+  <img src="https://raw.githubusercontent.com/helloskykoder/PawTube/refs/heads/main/pawtube_logo.png" alt="PawTube Logo" width="180" border-radius=50%>
 </p>
 
 <h1 align="center">🐾 PawTube</h1>
