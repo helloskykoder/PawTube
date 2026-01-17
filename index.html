@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PawTube</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --bg: #0d0d0d;
+    --card: #141414;
+    --text: #ffffff;
+    --accent: #00e5ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Center Section */
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.7s ease;
+}
+
+/* Logo */
+.logo {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+/* Search Box */
+.search-box {
+    width: 90%;
+    max-width: 600px;
+    background: var(--card);
+    border-radius: 50px;
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.15);
+    transition: 0.5s;
+}
+
+.search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+}
+
+/* Video Area */
+.video-container {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 25px;
+    display: none;
+    animation: fadeIn 0.8s ease;
+}
+
+iframe {
+    width: 100%;
+    height: 480px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 0 30px rgba(0,0,0,0.6);
+}
+
+/* After search animation */
+.move-up {
+    justify-content: flex-start;
+    padding-top: 30px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    iframe {
+        height: 240px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="mainBox">
+    <div class="logo">Paw<span>Tube</span></div>
+
+    <div class="search-box">
+        <input 
+            type="text" 
+            id="urlInput"
+            placeholder="Paste YouTube video link"
+        />
+    </div>
+
+    <div class="video-container" id="videoBox">
+        <iframe id="player" allowfullscreen></iframe>
+    </div>
+</div>
+
+<script>
+const input = document.getElementById("urlInput");
+const videoBox = document.getElementById("videoBox");
+const player = document.getElementById("player");
+const main = document.getElementById("mainBox");
+
+function extractVideoID(url) {
+    let regExp = /(?:youtube\.com\/.*v=|youtu\.be\/)([^&]+)/;
+    let match = url.match(regExp);
+    return match ? match[1] : null;
+}
+
+input.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+        let url = input.value.trim();
+        let videoId = extractVideoID(url);
+
+        if (!videoId) {
+            alert("Invalid YouTube link!");
+            return;
+        }
+
+        main.classList.add("move-up");
+        videoBox.style.display = "block";
+
+        player.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+    }
+});
+</script>
+
+</body>
+</html>
