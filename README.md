@@ -4,6 +4,7 @@
 
 <h1 align="center">🐾 PawTube</h1>
 <p align="center"><i>Minimal • Material • Modern YouTube Player</i></p>
+
 ![Status](https://img.shields.io/badge/status-active-success)
 ![Version](https://img.shields.io/badge/version-1.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
