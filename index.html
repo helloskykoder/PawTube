@@ -102,6 +102,23 @@ iframe {
     height: 0;
     opacity: 0;
 }
+.footer {
+    margin-top: 40px;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #aaa;
+    transition: 0.3s;
+}
+
+.footer a:hover {
+    color: var(--accent);
+}
 </style>
 </head>
 
@@ -125,7 +142,11 @@ iframe {
         </div>
     </div>
 </div>
-
+<footer class="footer">
+    <a href="https://github.com/helloskykoder/PawTube" target="_blank">
+        Made with 🐾 by PawDevs
+    </a>
+</footer>
 <script>
 let videoId = "";
 
